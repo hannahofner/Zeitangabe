@@ -27,19 +27,14 @@ A simple educational Python web app to display real-time Vienna public transport
 1.  **Register**: Create a new account on the home page.
 2.  **Login**: Log in with your credentials.
 3.  **Search**:
-    - Enter a **Stop ID** (e.g., `60200624` for Stephansplatz).
+    - Enter a Stop (e.g. Stephansplatz).
     - Or click one of the example buttons.
 4.  **Favourites**:
     - Click "Add to Favourites" after searching for a stop.
     - View your favourites in the "My Favourites" list.
     - Click a favourite to quickly load its departures.
 
-## Example Stop IDs (RBL)
 
-- **Stephansplatz (U1)**: `4921`
-- **Karlsplatz (U1)**: `4926`
-- **Westbahnhof (U3)**: `4212`
-- **Praterstern (U1)**: `4912`
 
 ## Tech Stack
 
