@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViennaNext - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- jQuery (required for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <span>ViennaNext 🚇 | Hello, {{ username }}</span>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="panel">
+            <h2>My Favourites</h2>
+            <ul id="favouritesList">
+                <!-- Favourites go here -->
+            </ul>
+        </div>
+
+        <div class="panel">
+            <h2>Find Departures</h2>
+            <div class="search-box">
+                <label for="stopSelect">Choose a stop:</label>
+                <select id="stopSelect" style="width: 100%;">
+                    <option value="">-- Select a Stop --</option>
+                    {% for stop in stops %}
+                    <option value="{{ stop.id }}">{{ stop.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div id="resultsArea" class="hidden">
+                <h3 id="currentStopName">Departures</h3>
+                <div class="controls">
+                    <button id="favBtn" onclick="addToFavourites()">★ Add to Favourites</button>
+                    <select id="directionFilter" onchange="filterDepartures()">
+                        <option value="all">All Directions</option>
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+
+                <table id="departuresTable">
+                    <thead>
+                        <tr>
+                            <th>Line</th>
+                            <th>Direction</th>
+                            <th>Countdown</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows go here -->
+                    </tbody>
+                </table>
+                <button id="showMoreBtn" class="hidden" onclick="showMore()">Show More</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
